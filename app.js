@@ -29,7 +29,23 @@ app.get('/restaurants/new', (req, res) => {
 })
 
 // 新增一家餐廳
-app.post('/restaurants/new', (req, res) => {})
+app.post('/restaurants/new', (req, res) => {
+  const restaurant = Restaurant({
+    name: req.body.name,
+    name_en: req.body.name_en,
+    category: req.body.category,
+    image: req.body.image,
+    location: req.body.location,
+    phone: req.body.phone,
+    google_map: req.body.google_map,
+    rating: req.body.rating,
+    description: req.body.description,
+  })
+  restaurant.save(err => {
+    if (err) return console.error(err)
+    return res.redirect('/')
+  })
+})
 
 // 瀏覽一家餐廳的詳細資訊
 app.get('/restaurants/:id/detail', (req, res) => {})
