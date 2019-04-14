@@ -18,9 +18,28 @@ db.once('open', () => {
   console.log('mongodb connected!')
 })
 
+// 瀏覽全部餐廳
 app.get('/', (req, res) => {
   res.render('index', { restaurants: restaurantList.results })
 })
+
+// 前往新增一家餐廳資訊的頁面
+app.get('/restaurants/new', (req, res) => {})
+
+// 新增一家餐廳
+app.post('/restaurants', (req, res) => {})
+
+// 瀏覽一家餐廳的詳細資訊
+app.get('/restaurants/:id/detail', (req, res) => {})
+
+//前往修改一家餐廳資訊的頁面
+app.get('/restaurants/:id/edit', (req, res) => {})
+
+// 修改一家餐廳的資訊
+app.post('/restaurants/:id/edit', (req, res) => {})
+
+// 刪除一家餐廳
+app.post('/restaurants/:id/delete', (req, res) => {})
 
 // render search results
 app.get('/search', (req, res) => {
