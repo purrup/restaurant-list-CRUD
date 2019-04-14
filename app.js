@@ -3,6 +3,7 @@ const app = express()
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/restaurants', { useNewUrlParser: true })
 const db = mongoose.connection
+const restaurantList = require('./restaurant.json')
 
 db.on('error', () => {
   console.log('mongodb error')
