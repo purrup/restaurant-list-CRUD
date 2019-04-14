@@ -9,6 +9,10 @@ const exphbs = require('express-handlebars')
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(express.static('public'))
+// 引用 body-parser
+const bodyParser = require('body-parser')
+// 設定 bodyParser
+app.use(bodyParser.urlencoded({ extended: true }))
 
 db.on('error', () => {
   console.log('mongodb error')
@@ -20,7 +24,10 @@ db.once('open', () => {
 
 // 瀏覽全部餐廳
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList.results })
+  Restaurant.find((err, restaurants) => {
+    if (err) return console.error(err)
+    return res.render('index', { restaurants: restaurants })
+  })
 })
 
 // 前往新增一家餐廳資訊的頁面
@@ -29,17 +36,18 @@ app.get('/restaurants/new', (req, res) => {
 })
 
 // 新增一家餐廳
-app.post('/restaurants/new', (req, res) => {
+app.post('/restaurants', (req, res) => {
+  console.log(req.body.name)
   const restaurant = Restaurant({
     name: req.body.name,
-    name_en: req.body.name_en,
-    category: req.body.category,
-    image: req.body.image,
-    location: req.body.location,
-    phone: req.body.phone,
-    google_map: req.body.google_map,
-    rating: req.body.rating,
-    description: req.body.description,
+    // name_en: req.body.name_en,
+    // category: req.body.category,
+    // image: req.body.image,
+    // location: req.body.location,
+    // phone: req.body.phone,
+    // google_map: req.body.google_map,
+    // rating: req.body.rating,
+    // description: req.body.description,
   })
   restaurant.save(err => {
     if (err) return console.error(err)
