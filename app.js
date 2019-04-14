@@ -92,7 +92,16 @@ app.post('/restaurants/:id/', (req, res) => {
 })
 
 // 刪除一家餐廳
-app.post('/restaurants/:id/delete', (req, res) => {})
+app.post('/restaurants/:id/delete', (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err)
+    restaurant.remove(err => {
+      if (err) return console.error(err)
+      console.log(restaurant)
+      return res.redirect('/')
+    })
+  })
+})
 
 // render search results
 app.get('/search', (req, res) => {
