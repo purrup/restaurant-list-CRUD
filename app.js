@@ -3,7 +3,12 @@ const app = express()
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/restaurants', { useNewUrlParser: true })
 const db = mongoose.connection
+const Restaurant = require('./models/restaurant')
 const restaurantList = require('./restaurant.json')
+const exphbs = require('express-handlebars')
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.set('view engine', 'handlebars')
+app.use(express.static('public'))
 
 db.on('error', () => {
   console.log('mongodb error')
@@ -13,10 +18,8 @@ db.once('open', () => {
   console.log('mongodb connected!')
 })
 
-const Restaurant = require('./models/restaurant')
-
 app.get('/', (req, res) => {
-  res.send('hello world')
+  res.render('index', { restaurants: restaurantList.results })
 })
 
 app.listen(3000, () => {
