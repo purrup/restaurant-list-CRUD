@@ -1,6 +1,6 @@
 # Restaurant list
 
-收藏你喜愛的餐廳清單
+收藏你喜愛的餐廳清單!
 
 ## Getting Started
 
