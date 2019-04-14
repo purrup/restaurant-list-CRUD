@@ -1,0 +1,45 @@
+<div class="d-flex flex-column align-items-start">
+  {{!-- back --}}
+
+  <form action="/" method="GET">
+    <button type="submit" class="btn btn-light mx-5">回首頁</button>
+  </form>
+
+  {{!-- 新增餐廳 --}}
+  <form action="/restaurants" method="POST">
+    <div class="d-flex flex-column align-items-start m-5">
+      <div class="col-6 d-flex flex-column m-3">
+        <div class="form-row">
+          <div class="col-6 m-3">
+            <input type="text" class="form-control" placeholder="name">
+          </div>
+          <div class="col-6 m-3">
+            <input type="text" class="form-control" placeholder="english name">
+          </div>
+          <div class="col-6 m-3">
+            <input type="text" class="form-control" placeholder="category">
+          </div>
+          <div class="col-6 m-3">
+            <input type="text" class="form-control" placeholder="image">
+          </div>
+          <div class="col-6 m-3">
+            <input type="text" class="form-control" placeholder="location">
+          </div>
+          <div class="col-6 m-3">
+            <input type="text" class="form-control" placeholder="phone">
+          </div>
+          <div class="col-6 m-3">
+            <input type="text" class="form-control" placeholder="google_map">
+          </div>
+          <div class="col-6 m-3">
+            <input type="text" class="form-control" placeholder="rating">
+          </div>
+          <div class="col-6 m-3">
+            <textarea name="description" id="description" placeholder="description" cols="40" rows="5"></textarea>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-info mx-5">新增餐廳</button>
+    </div>
+  </form>
+</div>

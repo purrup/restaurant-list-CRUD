@@ -24,10 +24,12 @@ app.get('/', (req, res) => {
 })
 
 // 前往新增一家餐廳資訊的頁面
-app.get('/restaurants/new', (req, res) => {})
+app.get('/restaurants/new', (req, res) => {
+  res.render('new')
+})
 
 // 新增一家餐廳
-app.post('/restaurants', (req, res) => {})
+app.post('/restaurants/new', (req, res) => {})
 
 // 瀏覽一家餐廳的詳細資訊
 app.get('/restaurants/:id/detail', (req, res) => {})
