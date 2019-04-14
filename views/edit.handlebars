@@ -1,0 +1,88 @@
+<header>
+  <!-- navigation -->
+  <nav class="navbar navbar-light bg-light">
+    <div class="container d-flex justify-content-between">
+      <form action="/" method="GET">
+        <a class="navbar-brand" href="/">
+          <img src="https://i.postimg.cc/JG2gFgJg/logo.png" width="30" height="30" class="d-inline-block align-top"
+            alt="我的餐廳清單">
+          我的餐廳清單
+        </a>
+      </form>
+
+      {{!-- 回首頁 --}}
+      <form action="/" method="GET">
+        <button type="submit" class="btn btn-info ">BACK</button>
+      </form>
+    </div>
+
+  </nav>
+  <div class="banner"></div>
+</header>
+
+<form action="/restaurants/{{{restaurant.id}}}" method="POST">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-10 mx-auto">
+        <div class="container mt-5">
+          <div class="row">
+            <div class="col-md-10 col-12 mx-auto">
+              <div class="d-flex flex-column align-items-start m-5">
+                <div class="col-12 d-flex flex-row m-3">
+                  <div class="form-row">
+                    <div class="col-4 m-3">
+                      餐廳名
+                      <input type="text" class="form-control" placeholder="name" name="name"
+                        value="{{{restaurant.name}}}">
+                    </div>
+                    <div class="col-4 m-3">
+                      餐廳英文名
+                      <input type="text" class="form-control" placeholder="english name" name="name_en"
+                        value="{{{restaurant.name_en}}}">
+                    </div>
+                    <div class="col-4 m-3">
+                      餐廳種類
+                      <input type="text" class="form-control" placeholder="category" name="category"
+                        value="{{{restaurant.category}}}">
+                    </div>
+                    <div class="col-8 m-3">
+                      餐廳照片連結
+                      <input type="text" class="form-control" placeholder="image link" name="image"
+                        value="{{{restaurant.image}}}">
+                    </div>
+                    <div class="col-8 m-3">
+                      地址
+                      <input type="text" class="form-control" placeholder="location" name="location"
+                        value="{{{restaurant.location}}}">
+                    </div>
+                    <div class="col-4 m-3">
+                      電話
+                      <input type="text" class="form-control" placeholder="phone number" name="phone"
+                        value="{{{restaurant.phone}}}">
+                    </div>
+                    <div class="col-8 m-3">
+                      google map
+                      <input type="text" class="form-control" placeholder="google map link" name="google_map"
+                        value="{{{restaurant.google_map}}}">
+                    </div>
+                    <div class="col-4 m-3">
+                      評分
+                      <input type="text" class="form-control" placeholder="rating" name="rating"
+                        value="{{{restaurant.rating}}}">
+                    </div>
+                    <div class="col-12 m-3">
+                      簡介
+                      <textarea name="description" id="description" placeholder="description" cols="80"
+                        rows="5">{{restaurant.description}}</textarea>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-info mx-5">修改完成</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

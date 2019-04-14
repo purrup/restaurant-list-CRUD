@@ -21,7 +21,6 @@
 </header>
 
 <div class="d-flex flex-column align-items-start">
-
   {{!-- 新增餐廳 --}}
   <form action="/restaurants" method="POST">
     <div class="container mt-5">
@@ -31,6 +30,7 @@
             <div class="col-12 d-flex flex-row m-3">
               <div class="form-row">
                 <div class="col-4 m-3">
+                  餐廳名
                   <input type="text" class="form-control" placeholder="name" name="name">
                 </div>
                 <div class="col-4 m-3">
@@ -61,5 +61,8 @@
             </div>
             <button type="submit" class="btn btn-info mx-5">新增餐廳</button>
           </div>
+        </div>
+      </div>
+    </div>
   </form>
 </div>

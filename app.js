@@ -37,7 +37,6 @@ app.get('/restaurants/new', (req, res) => {
 
 // 新增一家餐廳
 app.post('/restaurants', (req, res) => {
-  console.log(req.body.name)
   const restaurant = Restaurant({
     name: req.body.name,
     name_en: req.body.name_en,
@@ -64,10 +63,33 @@ app.get('/restaurants/:id', (req, res) => {
 })
 
 //前往修改一家餐廳資訊的頁面
-app.get('/restaurants/:id/edit', (req, res) => {})
+app.get('/restaurants/:id/edit', (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err)
+    return res.render('edit', { restaurant: restaurant })
+  })
+})
 
 // 修改一家餐廳的資訊
-app.post('/restaurants/:id/edit', (req, res) => {})
+app.post('/restaurants/:id/', (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err)
+    restaurant.name = req.body.name
+    restaurant.name_en = req.body.name_en
+    restaurant.category = req.body.category
+    restaurant.image = req.body.image
+    restaurant.location = req.body.location
+    restaurant.phone = req.body.phone
+    restaurant.google_map = req.body.google_map
+    restaurant.rating = req.body.rating
+    restaurant.description = req.body.description
+
+    restaurant.save(err => {
+      if (err) return console.error(err)
+      return res.redirect(`/restaurants/${restaurant.id}`)
+    })
+  })
+})
 
 // 刪除一家餐廳
 app.post('/restaurants/:id/delete', (req, res) => {})
