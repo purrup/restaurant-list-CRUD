@@ -1,45 +1,65 @@
-<div class="d-flex flex-column align-items-start">
-  {{!-- back --}}
+<header>
+  <!-- navigation -->
+  <nav class="navbar navbar-light bg-light">
+    <div class="container d-flex justify-content-between">
+      <form action="/" method="GET">
+        <a class="navbar-brand" href="/">
+          <img src="https://i.postimg.cc/JG2gFgJg/logo.png" width="30" height="30" class="d-inline-block align-top"
+            alt="我的餐廳清單">
+          我的餐廳清單
+        </a>
+      </form>
 
-  <form action="/" method="GET">
-    <button type="submit" class="btn btn-light mx-5">回首頁</button>
-  </form>
+      {{!-- 回首頁 --}}
+      <form action="/" method="GET">
+        <button type="submit" class="btn btn-info ">BACK</button>
+      </form>
+    </div>
+
+  </nav>
+  <div class="banner"></div>
+</header>
+
+<div class="d-flex flex-column align-items-start">
 
   {{!-- 新增餐廳 --}}
   <form action="/restaurants" method="POST">
-    <div class="d-flex flex-column align-items-start m-5">
-      <div class="col-6 d-flex flex-column m-3">
-        <div class="form-row">
-          <div class="col-6 m-3">
-            <input type="text" class="form-control" placeholder="name" name="name">
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-10 col-12 mx-auto">
+          <div class="d-flex flex-column align-items-start m-5">
+            <div class="col-12 d-flex flex-row m-3">
+              <div class="form-row">
+                <div class="col-4 m-3">
+                  <input type="text" class="form-control" placeholder="name" name="name">
+                </div>
+                <div class="col-4 m-3">
+                  <input type="text" class="form-control" placeholder="english name" name="name_en">
+                </div>
+                <div class="col-4 m-3">
+                  <input type="text" class="form-control" placeholder="category" name="category">
+                </div>
+                <div class="col-8 m-3">
+                  <input type="text" class="form-control" placeholder="image link" name="image">
+                </div>
+                <div class="col-8 m-3">
+                  <input type="text" class="form-control" placeholder="location" name="location">
+                </div>
+                <div class="col-4 m-3">
+                  <input type="text" class="form-control" placeholder="phone number" name="phone">
+                </div>
+                <div class="col-8 m-3">
+                  <input type="text" class="form-control" placeholder="google map link" name="google_map">
+                </div>
+                <div class="col-4 m-3">
+                  <input type="text" class="form-control" placeholder="rating" name="rating">
+                </div>
+                <div class="col-12 m-3">
+                  <textarea name="description" id="description" placeholder="description" cols="80" rows="5"></textarea>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-info mx-5">新增餐廳</button>
           </div>
-          <div class="col-6 m-3">
-            <input type="text" class="form-control" placeholder="english name" name="name_en">
-          </div>
-          <div class="col-6 m-3">
-            <input type="text" class="form-control" placeholder="category" name="category">
-          </div>
-          <div class="col-6 m-3">
-            <input type="text" class="form-control" placeholder="image link" name="image">
-          </div>
-          <div class="col-6 m-3">
-            <input type="text" class="form-control" placeholder="location" name="location">
-          </div>
-          <div class="col-6 m-3">
-            <input type="text" class="form-control" placeholder="phone number" name="phone">
-          </div>
-          <div class="col-6 m-3">
-            <input type="text" class="form-control" placeholder="google map link" name="google_map">
-          </div>
-          <div class="col-6 m-3">
-            <input type="text" class="form-control" placeholder="rating" name="rating">
-          </div>
-          <div class="col-6 m-3">
-            <textarea name="description" id="description" placeholder="description" cols="40" rows="5"></textarea>
-          </div>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-info mx-5">新增餐廳</button>
-    </div>
   </form>
 </div>

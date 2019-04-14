@@ -40,14 +40,14 @@ app.post('/restaurants', (req, res) => {
   console.log(req.body.name)
   const restaurant = Restaurant({
     name: req.body.name,
-    // name_en: req.body.name_en,
-    // category: req.body.category,
-    // image: req.body.image,
-    // location: req.body.location,
-    // phone: req.body.phone,
-    // google_map: req.body.google_map,
-    // rating: req.body.rating,
-    // description: req.body.description,
+    name_en: req.body.name_en,
+    category: req.body.category,
+    image: req.body.image,
+    location: req.body.location,
+    phone: req.body.phone,
+    google_map: req.body.google_map,
+    rating: req.body.rating,
+    description: req.body.description,
   })
   restaurant.save(err => {
     if (err) return console.error(err)
@@ -56,7 +56,12 @@ app.post('/restaurants', (req, res) => {
 })
 
 // 瀏覽一家餐廳的詳細資訊
-app.get('/restaurants/:id/detail', (req, res) => {})
+app.get('/restaurants/:id', (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err)
+    return res.render('detail', { restaurant: restaurant })
+  })
+})
 
 //前往修改一家餐廳資訊的頁面
 app.get('/restaurants/:id/edit', (req, res) => {})
