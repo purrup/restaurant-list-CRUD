@@ -26,7 +26,7 @@ db.once('open', () => {
 app.get('/', (req, res) => {
   Restaurant.find((err, restaurants) => {
     if (err) return console.error(err)
-    return res.render('index', { restaurants: restaurants })
+    return res.render('index', { restaurants })
   })
 })
 
@@ -37,17 +37,7 @@ app.get('/restaurants/new', (req, res) => {
 
 // 新增一家餐廳
 app.post('/restaurants', (req, res) => {
-  const restaurant = Restaurant({
-    name: req.body.name,
-    name_en: req.body.name_en,
-    category: req.body.category,
-    image: req.body.image,
-    location: req.body.location,
-    phone: req.body.phone,
-    google_map: req.body.google_map,
-    rating: req.body.rating,
-    description: req.body.description,
-  })
+  const restaurant = Restaurant(req.body)
   restaurant.save(err => {
     if (err) return console.error(err)
     return res.redirect('/')
