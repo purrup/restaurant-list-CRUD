@@ -8,9 +8,9 @@ router.get('/new', (req, res) => {
 })
 
 // 新增一家餐廳
-router.post('/', (req, res) => {
+router.post('/add', (req, res) => {
   const restaurant = Restaurant(req.body)
-  restaurant.save(err => (err ? console.error(err) : res.redirect('/')))
+  restaurant.save(err => (err ? console.error(err) : res.redirect(`/`)))
 })
 
 // 瀏覽一家餐廳的詳細資訊
@@ -30,14 +30,14 @@ router.get('/:id/edit', (req, res) => {
 })
 
 // 修改一家餐廳的資訊
-router.put('/:id/', (req, res) => {
+router.put('/:id', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     Object.assign(restaurant, req.body)
 
     restaurant.save(err => {
       if (err) return console.error(err)
-      return res.redirect(`/${restaurant.id}`)
+      return res.redirect(`/restaurants/${restaurant.id}`)
     })
   })
 })
