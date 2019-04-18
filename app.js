@@ -24,10 +24,12 @@ db.once('open', () => {
 
 // 瀏覽全部餐廳
 app.get('/', (req, res) => {
-  Restaurant.find((err, restaurants) => {
-    if (err) return console.error(err)
-    return res.render('index', { restaurants })
-  })
+  Restaurant.find({})
+    .sort({ name: 'asc' })
+    .exec((err, restaurants) => {
+      if (err) return console.error(err)
+      return res.render('index', { restaurants })
+    })
 })
 
 // 前往新增一家餐廳資訊的頁面
