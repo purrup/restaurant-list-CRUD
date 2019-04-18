@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     (err, restaurants) =>
       err
         ? console.error(err)
-        : res.render('index', { restaurants: restaurants, keyword: keyword })
+        : res.render('index', { restaurants, keyword: req.query.keyword })
   )
 })
 module.exports = router
