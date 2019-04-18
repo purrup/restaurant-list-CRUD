@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Restaurant = require('./models/restaurant')
+const Restaurant = require('../models/restaurant')
 
 // 瀏覽全部餐廳
 router.get('/', (req, res) => {
