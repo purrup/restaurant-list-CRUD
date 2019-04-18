@@ -10,19 +10,8 @@ db.on('error', () => {
 
 db.once('open', () => {
   console.log('db connected!')
-
-  for (i = 0; i < restaurantList.results.length; i++) {
-    Restaurant.create({
-      name: restaurantList.results[i].name,
-      name_en: restaurantList.results[i].name_en,
-      category: restaurantList.results[i].category,
-      image: restaurantList.results[i].image,
-      location: restaurantList.results[i].location,
-      phone: restaurantList.results[i].phone,
-      google_map: restaurantList.results[i].google_map,
-      rating: restaurantList.results[i].rating,
-      description: restaurantList.results[i].description,
-    })
+  for (let restaurant of restaurantList.results) {
+    Restaurant.create(restaurant)
   }
   console.log('done!')
 })
