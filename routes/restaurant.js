@@ -10,7 +10,11 @@ router.get('/new', (req, res) => {
 // 新增一家餐廳
 router.post('/add', (req, res) => {
   const restaurant = Restaurant(req.body)
-  restaurant.save(err => (err ? console.error(err) : res.redirect(`/`)))
+  // 如果圖片區空白，插入隨機圖片
+  !restaurant.image
+    ? (restaurant.image = 'https://picsum.photos/291/180/?random')
+    : true
+  restaurant.save(err => (err ? console.error(err) : res.redirect('/')))
 })
 
 // 瀏覽一家餐廳的詳細資訊
