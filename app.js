@@ -6,6 +6,12 @@ const db = mongoose.connection
 const Restaurant = require('./models/restaurant')
 const restaurantList = require('./restaurant.json')
 const exphbs = require('express-handlebars')
+// 引用 method-override
+const methodOverride = require('method-override')
+
+// 設定 method-override
+app.use(methodOverride('_method'))
+
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(express.static('public'))
@@ -63,7 +69,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
 })
 
 // 修改一家餐廳的資訊
-app.post('/restaurants/:id/', (req, res) => {
+app.put('/restaurants/:id/', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     Object.assign(restaurant, req.body)
@@ -76,12 +82,11 @@ app.post('/restaurants/:id/', (req, res) => {
 })
 
 // 刪除一家餐廳
-app.post('/restaurants/:id/delete', (req, res) => {
+app.delete('/restaurants/:id/delete', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     restaurant.remove(err => {
       if (err) return console.error(err)
-      console.log(restaurant)
       return res.redirect('/')
     })
   })

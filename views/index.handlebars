@@ -60,7 +60,7 @@
             <div class="card-footer text-secondary d-flex justify-content-around align-items-center">
               <a href="/restaurants/{{{this.id}}}" class="badge badge-light">detail</a>
               <a href="/restaurants/{{{this.id}}}/edit" class="badge badge-light">edit</a>
-              <form action="/restaurants/{{{this.id}}}/delete" method="POST">
+              <form action="/restaurants/{{{this.id}}}/delete?_method=DELETE" method="POST">
                 <button type="submit" class="btn btn-danger">
                   delete
                 </button>
