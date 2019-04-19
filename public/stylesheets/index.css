@@ -66,8 +66,12 @@ header {
 }
 
 .card-footer .badge {
-  padding: 8px;
+  padding: 12px;
   font-size: 16px;
+}
+
+.card-footer .btn {
+  font-weight: bold;
 }
 
 .restaurant-category {

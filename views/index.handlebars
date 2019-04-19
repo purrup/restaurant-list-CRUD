@@ -7,10 +7,7 @@
           alt="我的餐廳清單">
         我的餐廳清單
       </a>
-      {{!-- 新增餐廳的按鈕 --}}
-      <form action="/restaurants/new" method="GET">
-        <button type="submit" class="btn btn-info">新增餐廳</button>
-      </form>
+
     </div>
   </nav>
 
@@ -37,6 +34,29 @@
 
 <!-- restaurant list -->
 <div class="container mt-5">
+
+  <div class="row">
+    {{!-- 新增餐廳的按鈕 --}}
+    <div class="col-md-10 col-12 mx-auto mb-3 d-flex justify-content-end">
+      <form action="/restaurants/new" method="GET">
+        <button type="submit" class="btn btn-secondary btn-lg mx-4">新增餐廳</button>
+      </form>
+      {{!-- 排序按鈕 --}}
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle btn-lg" type="button" id="dropdownMenuButton"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          自訂排序
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">A-Z</a>
+          <a class="dropdown-item" href="#">Z-A</a>
+          <a class="dropdown-item" href="#">種類</a>
+          <a class="dropdown-item" href="#">地區</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
@@ -58,8 +78,8 @@
 
             </div>
             <div class="card-footer text-secondary d-flex justify-content-around align-items-center">
-              <a href="/restaurants/{{{this.id}}}" class="badge badge-light">detail</a>
-              <a href="/restaurants/{{{this.id}}}/edit" class="badge badge-light">edit</a>
+              <a href="/restaurants/{{{this.id}}}" class="badge badge-primary">detail</a>
+              <a href="/restaurants/{{{this.id}}}/edit" class="badge badge-primary">edit</a>
               <form action="/restaurants/{{{this.id}}}/delete?_method=DELETE" method="POST">
                 <button type="submit" class="btn btn-danger">
                   delete
