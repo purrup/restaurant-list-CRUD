@@ -51,7 +51,7 @@ $ nodemon app.js
 - 使用者可以搜尋餐廳名和種類
 - 使用者可以依據餐廳名、種類或是地區排序
 
-## tools
+# tools
 
 - [Visual Studio Code](https://visualstudio.microsoft.com/zh-hant/) - IDE
 - [Express](https://www.npmjs.com/package/express) - 後端框架
