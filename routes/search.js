@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     // $or可以查詢name或category等於keyword 的文檔
     { $or: [{ name: keyword }, { category: keyword }] }
   )
-    .sort({ name: 'desc' })
+    .sort({ name: 'asc' })
     .exec((err, restaurants) =>
       err
         ? console.error(err)

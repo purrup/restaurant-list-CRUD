@@ -20,48 +20,101 @@
   <div class="banner"></div>
 </header>
 
-<div class="d-flex flex-column align-items-start">
-  {{!-- 新增餐廳 --}}
-  <form action="/restaurants/add" method="POST">
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-md-10 col-12 mx-auto">
-          <div class="d-flex flex-column align-items-start m-5">
-            <div class="col-12 d-flex flex-row m-3">
-              <div class="form-row">
-                <div class="col-4 m-3">
-                  <input type="text" class="form-control" placeholder="name" name="name">
-                </div>
-                <div class="col-4 m-3">
-                  <input type="text" class="form-control" placeholder="english name" name="name_en">
-                </div>
-                <div class="col-4 m-3">
-                  <input type="text" class="form-control" placeholder="category" name="category">
-                </div>
-                <div class="col-8 m-3">
-                  <input type="text" class="form-control" placeholder="image link" name="image" value="">
-                </div>
-                <div class="col-8 m-3">
-                  <input type="text" class="form-control" placeholder="location" name="location">
-                </div>
-                <div class="col-4 m-3">
-                  <input type="text" class="form-control" placeholder="phone number" name="phone">
-                </div>
-                <div class="col-8 m-3">
-                  <input type="text" class="form-control" placeholder="google map link" name="google_map">
-                </div>
-                <div class="col-4 m-3">
-                  <input type="text" class="form-control" placeholder="rating" name="rating" value="0">
-                </div>
-                <div class="col-12 m-3">
-                  <textarea name="description" id="description" placeholder="description" cols="80" rows="5"></textarea>
-                </div>
-              </div>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-10 col-12 mx-auto mb-3 d-flex justify-content-end">
+      {{!-- 新增餐廳 --}}
+      <form action="/restaurants/add" method="POST" class="needs-validation" novalidate>
+        <div class="form-row">
+          <div class="col-md-5 mb-3 mr-3">
+            <label for="name">餐廳名*</label>
+            <input type="text" class="form-control" id="name" placeholder="name" required>
+            <div class="valid-feedback">
+              Looks good!
             </div>
-            <button type="submit" class="btn btn-info mx-5">新增餐廳</button>
+            <div class="invalid-feedback">
+              Please provide a name.
+            </div>
+          </div>
+
+          <div class="col-md-5 mb-3">
+            <label for="name_en">餐廳英文名</label>
+            <input type="text" class="form-control" id="name_en" placeholder="name in English">
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+
+          <div class="col-md-5 mb-3 mr-3">
+            <label for="category">餐廳種類</label>
+            <input type="text" class="form-control" id="category" placeholder="category">
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+
+          <div class="col-md-5 mb-3">
+            <label for="image">圖片連結</label>
+            <input type="text" class="form-control" id="image" placeholder="image">
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-md-5 mb-3 mr-3">
+            <label for="location">地點</label>
+            <input type="text" class="form-control" id="location" placeholder="location">
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-md-5 mb-3">
+            <label for="phone">電話</label>
+            <input type="text" class="form-control" id="phone" placeholder="phone">
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-md-5 mb-3 mr-3">
+            <label for="google-map">google map</label>
+            <input type="text" class="form-control" id="google-map" placeholder="google-map">
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-md-5 mb-3">
+            <label for="rating">評分</label>
+            <input type="text" class="form-control" id="rating" placeholder="rating">
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-md-10 mb-3">
+            <label for="description">簡介</label>
+            <textarea name="description" id="description" class="form-control" placeholder="description" cols="90"
+              rows="5"></textarea>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
           </div>
         </div>
-      </div>
+
+        <button type="submit" class="btn btn-info my-3">新增餐廳</button>
+      </form>
     </div>
-  </form>
-</div>
+    <script>
+      (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+          var forms = document.getElementsByClassName('needs-validation');
+          var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
