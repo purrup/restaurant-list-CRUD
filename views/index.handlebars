@@ -18,7 +18,7 @@
 <div class="container search-bar">
   <div class="search-bar-outer">
     <div class="search-bar-inner">
-      <form action="/search">
+      <form action="/search" id="search">
         <h4 class="mb-2">尋找餐廳：</h4>
         <div class="input-group">
           <input type="text" name="keyword" value="{{keyword}}" class="form-control" placeholder="輸入餐廳、分類"
@@ -41,17 +41,28 @@
       <form action="/restaurants/new" method="GET">
         <button type="submit" class="btn btn-secondary btn-lg mx-4">新增餐廳</button>
       </form>
+
       {{!-- 排序按鈕 --}}
+      {{!-- <span class="mx-2" id="order">自訂排序</span>
+      <select name="sortOrder" form="search" id="sortOrder">
+        <option value="desc">A-Z</option>
+        <option value="asc">Z-A</option>
+        <option value="category">種類</option>
+        <option value="location">地區</option>
+      </select>
+      <button type="submit" class="btn btn-secondary btn-lg mx-4">送出</button> --}}
+
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle btn-lg" type="button" id="dropdownMenuButton"
           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           自訂排序
         </button>
+
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">A-Z</a>
-          <a class="dropdown-item" href="#">Z-A</a>
-          <a class="dropdown-item" href="#">種類</a>
-          <a class="dropdown-item" href="#">地區</a>
+          <a class="dropdown-item" href="/sort/name/asc">A-Z</a>
+          <a class="dropdown-item" href="/sort/name/desc">Z-A</a>
+          <a class="dropdown-item" href="/sort/category/1">種類</a>
+          <a class="dropdown-item" href="/sort/location/1">地區</a>
         </div>
       </div>
     </div>

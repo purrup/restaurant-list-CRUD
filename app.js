@@ -26,6 +26,7 @@ app.use(express.static('public'))
 app.use('/', require('./routes/home'))
 app.use('/restaurants', require('./routes/restaurant'))
 app.use('/search', require('./routes/search'))
+app.use('/sort', require('./routes/sort'))
 
 db.on('error', () => {
   console.log('mongodb error')
