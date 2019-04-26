@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/user') // 載入 User model
-// const passport = require('passport')
+const passport = require('passport')
 // const bcrypt = require('bcryptjs')
 
 // 登入頁面
@@ -11,11 +11,11 @@ router.get('/login', (req, res) => {
 
 // 登入檢查
 router.post('/login', (req, res, next) => {
-  // passport.authenticate('local', {
-  //   // 使用 passport 認證
-  //   successRedirect: '/', // 登入成功會回到根目錄
-  //   failureRedirect: '/users/login', // 失敗會留在原本頁面
-  // })(req, res, next)
+  passport.authenticate('local', {
+    // 使用 passport 認證
+    successRedirect: '/', // 登入成功會回到根目錄
+    failureRedirect: '/users/login', // 失敗會留在原本頁面
+  })(req, res, next)
 })
 
 // 註冊頁面
@@ -28,7 +28,6 @@ router.post('/register', (req, res) => {
   const { name, email, password, password2 } = req.body
   User.findOne({ email: email }).then(user => {
     if (user) {
-      console.log('User already exists')
       res.render('register', {
         name,
         email,

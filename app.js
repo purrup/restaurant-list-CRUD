@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 const exphbs = require('express-handlebars')
+const session = require('express-session')
+const passport = require('passport')
 
 // 連線MongoDB
 const mongoose = require('mongoose')
@@ -16,6 +18,24 @@ app.use(methodOverride('_method'))
 const bodyParser = require('body-parser')
 // 設定 bodyParser
 app.use(bodyParser.urlencoded({ extended: true }))
+
+// 使用 express session
+app.use(
+  session({
+    secret: 'purrup',
+  })
+)
+
+// 使用 Passport
+app.use(passport.initialize())
+app.use(passport.session())
+
+// 載入 Passport config
+require('./config/passport')(passport)
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  next()
+})
 
 // 設定handlebars和模板引擎
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
