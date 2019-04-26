@@ -4,7 +4,7 @@ const Restaurant = require('../models/restaurant')
 const { authenticated } = require('../config/auth')
 // 瀏覽全部餐廳
 router.get('/', authenticated, (req, res) => {
-  Restaurant.find({})
+  Restaurant.find({ userId: req.user._id })
     .sort({ name: 'asc' })
     .exec((err, restaurants) =>
       err ? console.error(err) : res.render('index', { restaurants })
