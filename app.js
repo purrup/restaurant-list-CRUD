@@ -22,12 +22,6 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
-// routers
-app.use('/', require('./routes/home'))
-app.use('/restaurants', require('./routes/restaurant'))
-app.use('/search', require('./routes/search'))
-app.use('/sort', require('./routes/sort'))
-
 db.on('error', () => {
   console.log('mongodb error')
 })
@@ -35,6 +29,13 @@ db.on('error', () => {
 db.once('open', () => {
   console.log('mongodb connected!')
 })
+
+// routers
+app.use('/', require('./routes/home'))
+app.use('/restaurants', require('./routes/restaurant'))
+app.use('/search', require('./routes/search'))
+app.use('/sort', require('./routes/sort'))
+app.use('/users', require('./routes/user')) // 新增的 user 路由器
 
 app.listen(3000, () => {
   console.log(`App is running on http://localhost:3000`)
