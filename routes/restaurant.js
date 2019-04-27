@@ -9,24 +9,20 @@ router.get('/new', authenticated, (req, res) => {
 })
 
 // 新增一家餐廳
-router.post('/add', authenticated, (req, res) => {
-  console.log(req.body)
+router.post('/add', (req, res) => {
+  console.log('get form POST request')
 
-  const restaurant = Restaurant(
-    {
-      name: req.body.name,
-      userId: req.user._id,
-    }
-    // name: req.body.name,
-    // // 儲存 userId
-    // userId: req.user._id,
-  )
+  const restaurant = Restaurant({
+    name: req.body.name,
+    // 儲存 userId
+    userId: req.user._id,
+  })
   // 如果圖片區空白，插入隨機圖片
   !restaurant.image
     ? (restaurant.image = 'https://picsum.photos/291/180/?random')
     : true
 
-  restaurant.save(err => (err ? console.error(err) : res.redirect('/')))
+  restaurant.save(err => (err ? console.log(err) : res.redirect('/')))
 })
 
 // 瀏覽一家餐廳的詳細資訊

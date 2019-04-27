@@ -3,21 +3,18 @@ const app = express()
 const exphbs = require('express-handlebars')
 const session = require('express-session')
 const passport = require('passport')
-
+const methodOverride = require('method-override')
+const bodyParser = require('body-parser')
 // 連線MongoDB
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/restaurants', { useNewUrlParser: true })
 const db = mongoose.connection
 
-// 引用 method-override
-const methodOverride = require('method-override')
-// 設定 method-override
-app.use(methodOverride('_method'))
-
-// 引用 body-parser
-const bodyParser = require('body-parser')
 // 設定 bodyParser
 app.use(bodyParser.urlencoded({ extended: true }))
+
+// 設定 method-override
+app.use(methodOverride('_method'))
 
 // 使用 express session
 app.use(
@@ -32,11 +29,6 @@ app.use(passport.session())
 
 // 載入 Passport config
 require('./config/passport')(passport)
-app.use((req, res, next) => {
-  res.locals.user = req.user
-  next()
-})
-
 app.use((req, res, next) => {
   res.locals.user = req.user
   res.locals.isAuthenticated = req.isAuthenticated()
