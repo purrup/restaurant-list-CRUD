@@ -2,6 +2,15 @@
 
 收藏你喜愛的餐廳清單!
 
+## 網站畫面
+
+![image](https://github.com/purrup/restaurant-list-S5A8/blob/master/public/img/index.png)
+![image](https://github.com/purrup/restaurant-list-S5A8/blob/master/public/img/register.png)
+![image](https://github.com/purrup/restaurant-list-S5A8/blob/master/public/img/login.png)
+![image](https://github.com/purrup/restaurant-list-S5A8/blob/master/public/img/detail.png)
+![image](https://github.com/purrup/restaurant-list-S5A8/blob/master/public/img/edit.png)
+![image](https://github.com/purrup/restaurant-list-S5A8/blob/master/public/img/create.png)
+
 ## Getting Started
 
 ---
