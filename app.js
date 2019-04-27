@@ -10,6 +10,8 @@ const session = require('express-session')
 const passport = require('passport')
 const methodOverride = require('method-override')
 const bodyParser = require('body-parser')
+const flash = require('connect-flash')
+
 // 連線MongoDB
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/restaurants', {
@@ -33,6 +35,8 @@ app.use(
   })
 )
 
+app.use(flash())
+
 // 使用 Passport
 app.use(passport.initialize())
 app.use(passport.session())
@@ -42,6 +46,8 @@ require('./config/passport')(passport)
 app.use((req, res, next) => {
   res.locals.user = req.user
   res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
   next()
 })
 
