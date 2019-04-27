@@ -5,6 +5,12 @@
       "name": "Iron Man",
       "email": "cheeseburger@gmail.com",
       "password": "iamironman"
+    },
+    {
+      "id": 2,
+      "name": "Captain America",
+      "email": "americafirst@gmail.com",
+      "password": "icandothisallday"
     }
   ]
 }
