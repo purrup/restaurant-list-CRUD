@@ -1,0 +1,10 @@
+{
+  "results": [
+    {
+      "id": 1,
+      "name": "Iron Man",
+      "email": "cheeseburger@gmail.com",
+      "password": "iamironman"
+    }
+  ]
+}
