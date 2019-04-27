@@ -7,7 +7,10 @@ const methodOverride = require('method-override')
 const bodyParser = require('body-parser')
 // 連線MongoDB
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/restaurants', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/restaurants', {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+})
 const db = mongoose.connection
 
 // 設定 bodyParser
@@ -20,6 +23,8 @@ app.use(methodOverride('_method'))
 app.use(
   session({
     secret: 'purrup',
+    resave: 'false',
+    saveUninitialized: 'false',
   })
 )
 
