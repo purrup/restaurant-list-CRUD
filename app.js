@@ -37,6 +37,12 @@ app.use((req, res, next) => {
   next()
 })
 
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  res.locals.isAuthenticated = req.isAuthenticated()
+  next()
+})
+
 // 設定handlebars和模板引擎
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
