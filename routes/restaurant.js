@@ -10,8 +10,6 @@ router.get('/new', authenticated, (req, res) => {
 
 // 新增一家餐廳
 router.post('/add', (req, res) => {
-  console.log('get form POST request')
-
   const restaurant = Restaurant({
     name: req.body.name,
     // 儲存 userId
