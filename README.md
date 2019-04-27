@@ -42,6 +42,8 @@ $ nodemon app.js
 
 # Features
 
+- 使用者可以透過 Facebook 登入
+- 使用者登入、註冊時會依據情況出現適當提示訊息
 - 使用者可以新增一家餐廳
 - 使用者可以瀏覽一家餐廳的詳細資訊
 - 使用者可以瀏覽全部所有餐廳
@@ -53,6 +55,7 @@ $ nodemon app.js
 
 # tools
 
+- [Facebook Developers](https://developers.facebook.com/) - Facebook 第三方登入
 - [Visual Studio Code](https://visualstudio.microsoft.com/zh-hant/) - IDE
 - [Express](https://www.npmjs.com/package/express) - 後端框架
 - [Express-Handlebars](https://www.npmjs.com/package/express-handlebars) - 模板引擎
